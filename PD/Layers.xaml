@@ -1,0 +1,39 @@
+﻿<Window x:Class="PD.WindowLayers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PD"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="702.273" WindowStyle="None" >
+
+    <DockPanel>
+        <Grid x:Name="LayersInfo" DockPanel.Dock="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="0" Text="Номер слоя"></TextBlock>
+            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="1" Text="Толщина (H)"></TextBlock>
+            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="2" Text="Проницаемость (K)"></TextBlock>
+            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="3" Text="Пористость (Phi)"></TextBlock>
+            <TextBlock TextAlignment="Center"  Grid.Row="0"  Grid.Column="4" Text="Нефтенасыщенность (S_Oil)"></TextBlock>
+
+    </Grid>
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="ExitLayers" Width="130" Grid.Column="1" Height="20" VerticalAlignment="Bottom">Закрыть
+            </Button>
+        </Grid>
+        
+    </DockPanel>
+ 
+</Window>

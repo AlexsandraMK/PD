@@ -1,0 +1,36 @@
+﻿<Window x:Class="PD.WindowPerforations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PD"
+        mc:Ignorable="d"
+        Title="Редактирование фаз" Height="450" Width="702.273" WindowStyle="None" >
+
+    <DockPanel>
+        <Grid x:Name="PerforationsInfo" DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="0" Text="Номер зоны перфорации"></TextBlock>
+            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="1" Text="Верхняя граница (Pu)"></TextBlock>
+            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="2" Text="Нижняя граница (Pb)"></TextBlock>
+            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="3" Text="Мощность (Tetta)"></TextBlock>
+        </Grid>
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="ExitPerforations" Width="130" Grid.Column="1" Height="20" VerticalAlignment="Bottom">Закрыть
+            </Button>
+        </Grid>
+
+    </DockPanel>
+
+</Window>
