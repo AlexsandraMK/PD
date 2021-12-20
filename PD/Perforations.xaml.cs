@@ -19,9 +19,9 @@ namespace PD
     /// </summary>
     public partial class WindowPerforations : Window
     {
-        TextBox[] pu;
-        TextBox[] pd;
-        TextBox[] theta;
+        public TextBox[] pu;
+        public TextBox[] pd;
+        public TextBox[] theta;
         public WindowPerforations(int nzp)
         {
 
@@ -62,6 +62,16 @@ namespace PD
         private void ExitPerforationsClick(object sender, RoutedEventArgs e)
         {
             Hide();
+        }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }

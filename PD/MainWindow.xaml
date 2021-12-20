@@ -3,30 +3,66 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpf="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF"
         xmlns:local="clr-namespace:PD"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550.639" Width="1088.978" Background="#FFCAF0C7">
-    <Grid Margin="10,10,10,10" Background="Azure">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="MainWindow" Height="1000" Width="1100" Background="#CBC7F9">
+    <Grid Margin="10,10,10,10" Background="#CBC7F9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="387*"/>
+            <RowDefinition Height="545*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="99*"></ColumnDefinition>
+            <ColumnDefinition Width="706*"/>
+            <ColumnDefinition Width="268*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid>
-            <Grid.Background>
-                <ImageBrush ImageSource="D:\Progs\VisualSaves\WPF\PD\PD\bin\Debug\1.jpg"/>
-            </Grid.Background>
+        <Grid x:Name="Grafic" Margin="0,0,10,0" Grid.RowSpan="3" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition>
+                </RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid x:Name="Grafic1" Grid.Row="0" />
+            <!--BorderBrush="Black" BorderThickness="2" Grid.Row="0"-->
+            <Border MinWidth="400" Margin="8" Grid.Row="0" Background="White" Padding="30" CornerRadius="20">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="2"/>
+                </Border.Effect>
+            </Border>
+            <Border  MinWidth="400" Margin="8" Grid.Row="1" Background="White" Padding="30" CornerRadius="20">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="2"/>
+                </Border.Effect>
+            </Border>
+            <Grid x:Name="Grafic2" Grid.Row="1" />
         </Grid>
-        <DockPanel Grid.Column="1">
-            <StackPanel Name="StackPanel1" DockPanel.Dock="Top">
-                <Button x:Name="AxisButton">
-                    Осесиметричная постановка
+
+        <DockPanel Grid.Column="2" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,0,0,62" Grid.RowSpan="3">
+            <StackPanel Name="StackPanel1" DockPanel.Dock="Top" Height="872" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="White">
+                <StackPanel.Effect>
+                    <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="1"/>
+                </StackPanel.Effect>
+                <!--
+                MaterialDesignFlatMidBgButton - темный
+                MaterialDesignOutlinedButton - С рамкой
+                MaterialDesignFlatButton - без цвета
+                -->
+                <Button x:Name="AxisButton" Click="AxisButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="40">
+                    <Button.Content>Осесиметричная постановка</Button.Content>
+
                 </Button>
                 <StackPanel x:Name="Axis" Visibility="Collapsed">
+
                     <!--- ................................................................................-->
-                    <Button x:Name="DomainButton">
-                        Расчетная область
+                    <Button x:Name="DomainButton" Style="{StaticResource MaterialDesignOutlinedButton}">
+                        <Button.Content>Расчетная область</Button.Content>
+
                     </Button>
                     <StackPanel x:Name="Domain" Visibility="Collapsed" Margin="5,10,5,10">
+
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
@@ -44,15 +80,16 @@
                             <TextBlock Text="NL" TextAlignment="Right" Grid.Column="0" Grid.Row="2" Margin="0,0,5,5"></TextBlock>
                             <TextBox x:Name="NL" TextChanged="NLInput" Grid.Column="1" Grid.Row="2" Margin="0,0,0,5"></TextBox>
                         </Grid>
-                        <Button x:Name="OpenLayers" Width="130">
-                            Редактировать слои
+                        <Button x:Name="OpenLayers" Width="150"  Style="{StaticResource MaterialDesignFlatButton}">
+                            <Button.Content>Редактировать</Button.Content>
                         </Button>
                     </StackPanel>
                     <!--- ................................................................................-->
-                    <Button x:Name="MeshButton">
+                    <Button x:Name="MeshButton"  Style="{StaticResource MaterialDesignOutlinedButton}">
                         Сетка
                     </Button>
                     <StackPanel x:Name="Mesh" Visibility="Collapsed" Margin="5,10,5,10">
+
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
@@ -68,15 +105,16 @@
                             <TextBlock Text="Kr" TextAlignment="Right" Grid.Column="0" Grid.Row="1" Margin="0,0,5,5"></TextBlock>
                             <TextBox x:Name="Kr" Grid.Column="1" Grid.Row="1" Margin="0,0,0,5"></TextBox>
                         </Grid>
-                        <Button x:Name="OpenMesh" Width="130">
+                        <Button x:Name="OpenMesh" Width="200"  Style="{StaticResource MaterialDesignFlatButton}">
                             Разбиение слоев по z
                         </Button>
                     </StackPanel>
                     <!--- ................................................................................-->
-                    <Button x:Name="ZonesButton">
+                    <Button x:Name="ZonesButton"  Style="{StaticResource MaterialDesignOutlinedButton}">
                         Зоны перфорации
                     </Button>
                     <StackPanel x:Name="Zone" Visibility="Collapsed" Margin="5,10,5,10">
+
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
@@ -88,16 +126,17 @@
                             <TextBlock Text="Nzp" TextAlignment="Right" Grid.Column="0" Grid.Row="0" Margin="0,0,5,5"></TextBlock>
                             <TextBox x:Name="Nzp" TextChanged="NzpInput" Grid.Column="1" Grid.Row="0" Margin="0,0,0,5"></TextBox>
                         </Grid>
-                        <Button x:Name="OpenZones" Width="130">
+                        <Button x:Name="OpenZones" Width="200"  Style="{StaticResource MaterialDesignFlatButton}">
                             Редактирование зон
                         </Button>
                     </StackPanel>
 
                     <!--- ................................................................................-->
-                    <Button x:Name="PhaseButton">
+                    <Button x:Name="PhaseButton"  Style="{StaticResource MaterialDesignOutlinedButton}">
                         Фазы
                     </Button>
                     <StackPanel x:Name="Phase" Visibility="Collapsed" Margin="5,10,5,10">
+
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
@@ -109,15 +148,16 @@
                             <TextBlock Text="Nph" TextAlignment="Right" Grid.Column="0" Grid.Row="0" Margin="0,0,5,5"></TextBlock>
                             <TextBox x:Name="Nph" TextChanged="NphInput"  Grid.Column="1" Grid.Row="0" Margin="0,0,0,5"></TextBox>
                         </Grid>
-                        <Button x:Name="OpenPhases" Width="130">
+                        <Button x:Name="OpenPhases" Width="200" Style="{StaticResource MaterialDesignFlatButton}">
                             Редактирование фаз
                         </Button>
                     </StackPanel>
                     <!--- ................................................................................-->
-                    <Button x:Name="DavlenieButton">
+                    <Button x:Name="DavlenieButton" Style="{StaticResource MaterialDesignOutlinedButton}">
                         Пластовое давление
                     </Button>
                     <StackPanel x:Name="Davlenie" Visibility="Collapsed" Margin="5,10,5,10">
+
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
@@ -133,14 +173,140 @@
                     </StackPanel>
 
                 </StackPanel>
-                <Button x:Name="OurAccuracyButton">
-                    <TextBlock Text="Вертикальная ось пласта" TextAlignment="Center"/>
-                </Button>
-                <StackPanel x:Name="OurAccuracy">
+                <!---->
+                <Button x:Name="OurAccuracyButton" Style="{StaticResource MaterialDesignRaisedDarkButton}" RenderTransformOrigin="0.502,0.406" Height="40">Вертикальная ось пласта</Button>
+                <StackPanel x:Name="XY_Axis" Visibility="Collapsed">
+
+                    <Button x:Name="XYDomainButton" Style="{StaticResource MaterialDesignOutlinedButton}">
+                        Расчетная область
+                    </Button>
+                    <StackPanel x:Name="XYDomain" Visibility="Collapsed">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Xmin" TextAlignment="Right" Grid.Column="0" Grid.Row="0" Margin="0,0,5,5"></TextBlock>
+                            <TextBox x:Name="Xmin" Grid.Column="1" Grid.Row="0" Margin="0,0,0,5"></TextBox>
+                            <TextBlock Text="Xmax" TextAlignment="Right" Grid.Column="0" Grid.Row="1" Margin="0,0,5,5"></TextBlock>
+                            <TextBox x:Name="Xmax" Grid.Column="1" Grid.Row="1" Margin="0,0,0,5"></TextBox>
+                            <TextBlock Text="Ymin" TextAlignment="Right" Grid.Column="0" Grid.Row="2" Margin="0,0,5,5"></TextBlock>
+                            <TextBox x:Name="Ymin" Grid.Column="1" Grid.Row="2" Margin="0,0,0,5"></TextBox>
+                            <TextBlock Text="Ymax" TextAlignment="Right" Grid.Column="0" Grid.Row="3" Margin="0,0,5,5"></TextBlock>
+                            <TextBox x:Name="Ymax" Grid.Column="1" Grid.Row="3" Margin="0,0,0,5"></TextBox>
+                            <TextBlock Text="K_xy" TextAlignment="Right" Grid.Column="0" Grid.Row="4" Margin="0,0,5,5"></TextBlock>
+                            <TextBox x:Name="K_xy" TextChanged="NLInput" Grid.Column="1" Grid.Row="4" Margin="0,0,0,5"></TextBox>
+                            <TextBlock Text="Phi_xy" TextAlignment="Right" Grid.Column="0" Grid.Row="5" Margin="0,0,5,5"></TextBlock>
+                            <TextBox x:Name="Phi_xy" TextChanged="NLInput" Grid.Column="1" Grid.Row="5" Margin="0,0,0,5"></TextBox>
+                            <TextBlock Text="SOil_xy" TextAlignment="Right" Grid.Column="0" Grid.Row="6" Margin="0,0,5,5"></TextBlock>
+                            <TextBox x:Name="SOil_xy" TextChanged="NLInput" Grid.Column="1" Grid.Row="6" Margin="0,0,0,5"></TextBox>
+                        </Grid>
+                    </StackPanel>
+                    <!--- ................................................................................-->
+                    <Button x:Name="XYMeshButton" Style="{StaticResource MaterialDesignOutlinedButton}">
+                        Сетка
+                    </Button>
+                    <StackPanel x:Name="XYMesh" Visibility="Collapsed" Margin="5,10,5,10">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Nx" TextAlignment="Right" Grid.Column="0" Grid.Row="0" Margin="0,0,5,5"></TextBlock>
+                            <TextBox x:Name="Nx"  Grid.Column="1" Grid.Row="0" Margin="0,0,0,5"></TextBox>
+                            <TextBlock Text="Ny" TextAlignment="Right" Grid.Column="0" Grid.Row="1" Margin="0,0,5,5"></TextBlock>
+                            <TextBox x:Name="Ny" Grid.Column="1" Grid.Row="1" Margin="0,0,0,5"></TextBox>
+                            <TextBlock Text="kw" TextAlignment="Right" Grid.Column="0" Grid.Row="2" Margin="0,0,5,5"></TextBlock>
+                            <TextBox x:Name="kw" Grid.Column="1" Grid.Row="2" Margin="0,0,0,5"></TextBox>
+                        </Grid>
+                    </StackPanel>
+                    <!--- ................................................................................-->
+                    <Button x:Name="WellsButton" Style="{StaticResource MaterialDesignOutlinedButton}">
+                        Скважины
+                    </Button>
+                    <StackPanel x:Name="Wells" Visibility="Collapsed" Margin="5,10,5,10">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Nw" TextAlignment="Right" Grid.Column="0" Grid.Row="0" Margin="0,0,5,5"></TextBlock>
+                            <TextBox x:Name="Nw" TextChanged="NwInput" Grid.Column="1" Grid.Row="0" Margin="0,0,0,5"></TextBox>
+                        </Grid>
+                        <Button x:Name="OpenWells" Width="200" Style="{StaticResource MaterialDesignFlatButton}">
+                            Редактирование скважин
+                        </Button>
+                    </StackPanel>
+                    <!--- ................................................................................-->
+                    <Button x:Name="PhaseXYButton" Style="{StaticResource MaterialDesignOutlinedButton}">
+                        Фазы
+                    </Button>
+                    <StackPanel x:Name="PhaseXY" Visibility="Collapsed" Margin="5,10,5,10">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Nph" TextAlignment="Right" Grid.Column="0" Grid.Row="0" Margin="0,0,5,5"></TextBlock>
+                            <TextBox x:Name="NphXY" TextChanged="NphXYInput"  Grid.Column="1" Grid.Row="0" Margin="0,0,0,5"></TextBox>
+                        </Grid>
+                        <Button x:Name="OpenPhasesXY" Width="200" Style="{StaticResource MaterialDesignFlatButton}">
+                            Редактирование фаз
+                        </Button>
+                    </StackPanel>
+                    <!--- ................................................................................-->
+                    <Button x:Name="DavlenieXYButton" Style="{StaticResource MaterialDesignOutlinedButton}">
+                        Пластовое давление
+                    </Button>
+                    <StackPanel x:Name="DavlenieXY" Visibility="Collapsed" Margin="5,10,5,10">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="P" TextAlignment="Right" Grid.Column="0" Grid.Row="0" Margin="0,0,5,5"></TextBlock>
+                            <TextBox x:Name="PXY"  Grid.Column="1" Grid.Row="0" Margin="0,0,0,5"></TextBox>
+                        </Grid>
+
+                    </StackPanel>
+
                 </StackPanel>
+
             </StackPanel>
-            <Button DockPanel.Dock="Bottom" Height="30" x:Name="Start" VerticalAlignment="Bottom">Старт</Button>
         </DockPanel>
+        <Button  Height="33" x:Name="Start" VerticalAlignment="Bottom" Click="StartClick" Content="Старт" Grid.Column="2" Margin="0,0,0,10" Style="{StaticResource MaterialDesignFlatMidBgButton}" Grid.Row="2"/>
+        <Button  Height="33" x:Name="Build" VerticalAlignment="Bottom" Click="BuildMesh"  Content="Построить сетку r z" Grid.Column="2" Margin="0,0,0,76" Style="{StaticResource MaterialDesignFlatMidBgButton}" Grid.Row="2"/>
+        <Button  Height="33" x:Name="Build_XY" VerticalAlignment="Bottom" Click="BuildMeshXY"  Content="Построить сетку x y" Grid.Column="2" Margin="0,0,0,43" Style="{StaticResource MaterialDesignFlatMidBgButton}" Grid.Row="2"/>
 
 
     </Grid>

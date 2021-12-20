@@ -5,35 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PD"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="702.273" WindowStyle="None" >
+        Title="Window1" Height="450" Width="702.273" WindowStyle="None" MouseMove="Window_MouseMove" MouseLeftButtonDown="Window_MouseLeftButtonDown" >
 
     <DockPanel>
         <Grid x:Name="LayersInfo" DockPanel.Dock="Top">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="0" Text="Номер слоя"></TextBlock>
-            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="1" Text="Толщина (H)"></TextBlock>
-            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="2" Text="Проницаемость (K)"></TextBlock>
-            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="3" Text="Пористость (Phi)"></TextBlock>
-            <TextBlock TextAlignment="Center"  Grid.Row="0"  Grid.Column="4" Text="Нефтенасыщенность (S_Oil)"></TextBlock>
+            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="0" Text="Номер слоя" Style="{StaticResource MaterialDesignDataGridTextColumnStyle}"></TextBlock>
+            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="1" Text="Толщина (H)" Style="{StaticResource MaterialDesignDataGridTextColumnStyle}"></TextBlock>
+            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="2" Text="Проницаемость (K)" Style="{StaticResource MaterialDesignDataGridTextColumnStyle}"></TextBlock>
+            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="3" Text="Пористость (Phi)" Style="{StaticResource MaterialDesignDataGridTextColumnStyle}"></TextBlock>
+            <TextBlock TextAlignment="Center"  Grid.Row="0"  Grid.Column="4" Text="Нефтенасыщенность (S_Oil)" Style="{StaticResource MaterialDesignDataGridTextColumnStyle}"></TextBlock>
 
-    </Grid>
+        </Grid>
         <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="19*"></ColumnDefinition>
+                <ColumnDefinition Width="328*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ExitLayers" Width="130" Grid.Column="1" Height="20" VerticalAlignment="Bottom">Закрыть
+            <Button x:Name="ExitLayers" Width="200" Height="27" VerticalAlignment="Bottom" Margin="210.812,0,245,10" RenderTransformOrigin="0.504,-0.068" Grid.Column="1">
+                <Button.Content>Закрыть</Button.Content>
             </Button>
         </Grid>
-        
+
     </DockPanel>
- 
+
 </Window>

@@ -1,4 +1,4 @@
-﻿<Window x:Class="PD.WindowPhases"
+﻿<Window x:Class="PD.WindowPhasesXY"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,7 +8,7 @@
         Title="Свойства фаз" Height="450" Width="300" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" >
 
     <DockPanel>
-        <Grid x:Name="PhasesInfo" DockPanel.Dock="Top">
+        <Grid x:Name="PhasesXYInfo" DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -23,10 +23,9 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ExitPhases" Width="130" Height="27" VerticalAlignment="Bottom" Margin="81,0,81,10">Закрыть
+            <Button x:Name="ExitPhasesXY" Width="130" Height="26" VerticalAlignment="Bottom" Margin="81,0,81,10">Закрыть
             </Button>
         </Grid>
 
     </DockPanel>
-
 </Window>

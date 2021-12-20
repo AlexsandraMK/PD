@@ -20,10 +20,10 @@ namespace PD
     /// </summary>
     public partial class WindowLayers : Window
     {
-        TextBox[] HL;
-        TextBox[] KL;
-        TextBox[] Phi;
-        TextBox[] SOil;
+        public TextBox[] HL;
+        public TextBox[] KL;
+        public TextBox[] Phi;
+        public TextBox[] SOil;
         public WindowLayers(int nl)
         {
 
@@ -75,10 +75,20 @@ namespace PD
             Hide();
         }
 
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+
         //private void SaveLayersClick(object sender, RoutedEventArgs e)
         //{
         //    StreamWriter LayersFile = new StreamWriter("domain_rz.txt");
-           
+
         //    LayersFile.WriteLine(MainWindow.rw);
         //    LayersFile.WriteLine(MainWindow.rb);
         //    LayersFile.WriteLine(MainWindow.nl);

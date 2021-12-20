@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,41 +15,38 @@ using System.Windows.Shapes;
 namespace PD
 {
     /// <summary>
-    /// Логика взаимодействия для Window1.xaml
+    /// Логика взаимодействия для Phases.xaml
     /// </summary>
-    public partial class WindowMesh : Window
+    public partial class WindowPhasesXY : Window
     {
-        public TextBox[] NZ;
-
-        public WindowMesh(int nl)
+        public TextBox[] MuXY;
+        public WindowPhasesXY(int nph)
         {
-
             InitializeComponent();
 
-            NZ = new TextBox[nl];
+            MuXY = new TextBox[nph];
 
-            for (int i = 0; i < nl; i++)
+            for (int i = 0; i < nph; i++)
             {
                 RowDefinition rowInfo = new RowDefinition();
-                MeshInfo.RowDefinitions.Add(rowInfo);
+                PhasesXYInfo.RowDefinitions.Add(rowInfo);
 
                 TextBlock numL = new TextBlock();
                 numL.Text += i + 1;
                 Grid.SetRow(numL, i + 1);
                 Grid.SetColumn(numL, 0);
-                MeshInfo.Children.Add(numL);
+                PhasesXYInfo.Children.Add(numL);
 
-                NZ[i] = new TextBox();
-                Grid.SetRow(NZ[i], i + 1);
-                Grid.SetColumn(NZ[i], 1);
-                MeshInfo.Children.Add(NZ[i]);
+                MuXY[i] = new TextBox();
+                Grid.SetRow(MuXY[i], i + 1);
+                Grid.SetColumn(MuXY[i], 1);
+                PhasesXYInfo.Children.Add(MuXY[i]);
             }
 
-            // SaveLayers.Click += SaveLayersClick;
-            ExitMesh.Click += ExitMeshClick;
+            ExitPhasesXY.Click += ExitPhasesXYClick;
         }
 
-        private void ExitMeshClick(object sender, RoutedEventArgs e)
+        private void ExitPhasesXYClick(object sender, RoutedEventArgs e)
         {
             Hide();
         }

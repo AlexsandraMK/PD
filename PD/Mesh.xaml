@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PD"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="300" WindowStyle="None" >
+        Title="Window1" Height="450" Width="300" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" >
 
     <DockPanel>
         <Grid x:Name="MeshInfo" DockPanel.Dock="Top">
@@ -16,14 +16,14 @@
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="0" Text="Номер слоя"></TextBlock>
-            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="1" Text="Количество разбиений слоя"></TextBlock>
+            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="0" Text="Номер слоя" Style="{StaticResource MaterialDesignDataGridTextColumnStyle}"></TextBlock>
+            <TextBlock TextAlignment="Center" Grid.Row="0" Grid.Column="1" Text="Количество разбиений слоя" Style="{StaticResource MaterialDesignDataGridTextColumnStyle}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"></TextBlock>
         </Grid>
         <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ExitMesh" Width="130" Grid.Column="1" Height="20" VerticalAlignment="Bottom">Закрыть
+            <Button x:Name="ExitMesh" Width="130" Height="26" VerticalAlignment="Bottom" Margin="81,0,81,10">Закрыть
             </Button>
         </Grid>
 

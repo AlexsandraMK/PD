@@ -19,7 +19,7 @@ namespace PD
     /// </summary>
     public partial class WindowPhases : Window
     {
-        TextBox[] Mu;
+        public TextBox[] Mu;
         public WindowPhases(int nph)
         {
             InitializeComponent();
@@ -51,5 +51,14 @@ namespace PD
          Hide();
       }
 
-   }
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+    }
 }
