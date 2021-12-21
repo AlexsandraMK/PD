@@ -74,6 +74,7 @@ namespace PD
             // Add the TextBox to the visual tree.
 
             Build.Click += BuildMesh;
+            Build_XY.Click += BuildMeshXY;
 
         }
 
@@ -81,21 +82,23 @@ namespace PD
         {
             Grafic1.Children.Clear();
 
+            //оси
             Line vertL = new Line();
             vertL.X1 = 20;
             vertL.Y1 = 5;
             vertL.X2 = 20;
-            vertL.Y2 = 465;
+            vertL.Y2 = (Grafic1.ActualHeight - 10);
             vertL.Stroke = Brushes.Black;
             Grafic1.Children.Add(vertL);
             Line horL = new Line();
             horL.X1 = 5;
             horL.Y1 = 20;
-            horL.X2 = 780;
+            horL.X2 = (Grafic1.ActualWidth - 10);
             horL.Y2 = 20;
             horL.Stroke = Brushes.Black;
             Grafic1.Children.Add(horL);
 
+            //Стрелочки для осей
             Polyline vertArr = new Polyline();
             vertArr.Points = new PointCollection();
             vertArr.Points.Add(new Point(15, 10));
@@ -105,9 +108,9 @@ namespace PD
             Grafic1.Children.Add(vertArr);
             Polyline horArr = new Polyline();
             horArr.Points = new PointCollection();
-            horArr.Points.Add(new Point(775, 15));
-            horArr.Points.Add(new Point(780, 20));
-            horArr.Points.Add(new Point(775, 25));
+            horArr.Points.Add(new Point((Grafic1.ActualWidth - 15), 15));
+            horArr.Points.Add(new Point((Grafic1.ActualWidth - 10), 20));
+            horArr.Points.Add(new Point((Grafic1.ActualWidth - 15), 25));
             horArr.Stroke = Brushes.Black;
             Grafic1.Children.Add(horArr);
 
@@ -117,31 +120,16 @@ namespace PD
             vertL1.X1 = 20;
             vertL1.Y1 = 5;
             vertL1.X2 = 20;
-            vertL1.Y2 = 465;
+            vertL1.Y2 = (Grafic1.ActualHeight - 40);
             vertL1.Stroke = Brushes.Black;
             Grafic2.Children.Add(vertL1);
             Line horL1 = new Line();
             horL1.X1 = 5;
             horL1.Y1 = 20;
-            horL1.X2 = 780;
+            horL1.X2 = (Grafic1.ActualWidth - 40);
             horL1.Y2 = 20;
             horL1.Stroke = Brushes.Black;
             Grafic2.Children.Add(horL1);
-
-            Polyline vertArr1 = new Polyline();
-            vertArr1.Points = new PointCollection();
-            vertArr1.Points.Add(new Point(15, 10));
-            vertArr1.Points.Add(new Point(20, 5));
-            vertArr1.Points.Add(new Point(25, 10));
-            vertArr1.Stroke = Brushes.Black;
-            Grafic2.Children.Add(vertArr1);
-            Polyline horArr1 = new Polyline();
-            horArr1.Points = new PointCollection();
-            horArr1.Points.Add(new Point(775, 15));
-            horArr1.Points.Add(new Point(780, 20));
-            horArr1.Points.Add(new Point(775, 25));
-            horArr1.Stroke = Brushes.Black;
-            Grafic2.Children.Add(horArr1);
         }
 
         void BuildAxisXY()
@@ -152,13 +140,13 @@ namespace PD
             vertL1.X1 = 20;
             vertL1.Y1 = 5;
             vertL1.X2 = 20;
-            vertL1.Y2 = 465;
+            vertL1.Y2 = (Grafic2.ActualHeight - 10);
             vertL1.Stroke = Brushes.Black;
             Grafic2.Children.Add(vertL1);
             Line horL1 = new Line();
             horL1.X1 = 5;
             horL1.Y1 = 20;
-            horL1.X2 = 780;
+            horL1.X2 = (Grafic2.ActualWidth - 10);
             horL1.Y2 = 20;
             horL1.Stroke = Brushes.Black;
             Grafic2.Children.Add(horL1);
@@ -172,9 +160,9 @@ namespace PD
             Grafic2.Children.Add(vertArr1);
             Polyline horArr1 = new Polyline();
             horArr1.Points = new PointCollection();
-            horArr1.Points.Add(new Point(775, 15));
-            horArr1.Points.Add(new Point(780, 20));
-            horArr1.Points.Add(new Point(775, 25));
+            horArr1.Points.Add(new Point((Grafic2.ActualWidth - 15), 15));
+            horArr1.Points.Add(new Point((Grafic2.ActualWidth - 10), 20));
+            horArr1.Points.Add(new Point((Grafic2.ActualWidth - 15), 25));
             horArr1.Stroke = Brushes.Black;
             Grafic2.Children.Add(horArr1);
         }
@@ -185,33 +173,37 @@ namespace PD
             double rw = Convert.ToDouble(Rw.Text), rb = Convert.ToDouble(Rb.Text);
             double vertNorm = 0, horNorm = 0;
 
-            vertNorm = 740 / rb; //по сути норма для пропорционального размещения на оси
+            vertNorm = (Grafic1.ActualWidth - 40) / rb; //по сути норма для пропорционального размещения на оси
 
             for (int i = 0; i < nl; i++)
                 horNorm += Convert.ToDouble(layers.HL[i].Text);
 
-            horNorm = 440 / horNorm;
+            horNorm = (Grafic1.ActualHeight - 40) / horNorm;
 
+            //***********линия rw
             Line rwL = new Line();
             rwL.X1 = 20 + rw * vertNorm; //20 + из-за оси смещенной на 20 единиц
             rwL.Y1 = 20;
             rwL.X2 = 20 + rw * vertNorm;
-            rwL.Y2 = 460;
+            rwL.Y2 = (Grafic1.ActualHeight - 20);
             rwL.Stroke = Brushes.Blue;
             rwL.StrokeDashCap = PenLineCap.Flat;
             rwL.StrokeDashArray = new DoubleCollection() { 2, 2 };
             Grafic1.Children.Add(rwL);
 
+            //***********линия rb
             Line rbL = new Line();
             rbL.X1 = 20 + rb * vertNorm;
             rbL.Y1 = 20;
             rbL.X2 = 20 + rb * vertNorm;
-            rbL.Y2 = 460;
+            rbL.Y2 = (Grafic1.ActualHeight - 20);
             rbL.Stroke = Brushes.Blue;
             rbL.StrokeDashCap = PenLineCap.Flat;
             rbL.StrokeDashArray = new DoubleCollection() { 2, 2 };
             Grafic1.Children.Add(rbL);
 
+
+            //***************слои
             double temp = 0;
             for (int i = 0; i < nl; i++)
             {
@@ -227,7 +219,20 @@ namespace PD
                 temp += Convert.ToDouble(layers.HL[i].Text) * horNorm;
             }
 
-            //**************после считывания вершин, рисуем элементы ***************************************//***************************************//
+            //****************зоны перфорации
+            for (int i = 0; i < nzp; i++)
+            {
+                Line L = new Line();
+                L.X1 = 20 + rw * vertNorm;
+                L.Y1 = 20 + Convert.ToDouble(perforations.pu[i].Text) * horNorm;
+                L.X2 = 20 + rw * vertNorm;
+                L.Y2 = 20 + Convert.ToDouble(perforations.pd[i].Text) * horNorm;
+                L.Stroke = Brushes.Red;
+                L.StrokeThickness = 5;
+                Grafic1.Children.Add(L);
+            }
+
+            //**************после считывания вершин, рисуем элементы
             StreamReader nodeReader = new StreamReader("node.txt", Encoding.UTF8);
             int numNodes = Int32.Parse(nodeReader.ReadLine());
             Point[] nodes = new Point[numNodes];
@@ -236,8 +241,6 @@ namespace PD
                 string text = nodeReader.ReadLine();
                 string[] bits = text.Split(' ');
                 nodes[i].Offset(20 + double.Parse(bits[0].Replace('.', ',')) * vertNorm, 20 + double.Parse(bits[1].Replace('.', ',')) * horNorm);
-                //nodes[i].X = 20 + nodeReader.Read();
-                //nodes[i].Y = 20 + nodeReader.Read() ;
             }
             nodeReader.Close();
 
@@ -259,6 +262,7 @@ namespace PD
             List<Polygon> elem = new List<Polygon>();
             for (int i = 0; i < numElem; i++)
             {
+                //**********для треугольников
                 /*Polygon triad = new Polygon();
                 for (int k = 0; k < 3; k++)
                     triad.Points.Add(nodes[numNodesElem[i, k]]);
@@ -287,35 +291,39 @@ namespace PD
             double xmin = Convert.ToDouble(Xmin.Text), ymin = Convert.ToDouble(Ymin.Text),
                 xmax = Convert.ToDouble(Xmax.Text), ymax = Convert.ToDouble(Ymax.Text);
 
-            double vertNorm = 440 / (ymax - ymin),
-            horNorm = 740 / (xmax - xmin);
+            double vertNorm = (Grafic2.ActualHeight - 40) / (ymax - ymin),
+            horNorm = (Grafic2.ActualWidth - 40) / (xmax - xmin);
 
+            //правая граница
             Line xmaxL = new Line();
-            xmaxL.X1 = 20 + (xmax - xmin) * horNorm;
+            xmaxL.X1 = (Grafic2.ActualWidth - 20);
             xmaxL.Y1 = 20;
-            xmaxL.X2 = 20 + (xmax - xmin) * horNorm;
-            xmaxL.Y2 = 460;
+            xmaxL.X2 = (Grafic2.ActualWidth - 20);
+            xmaxL.Y2 = (Grafic2.ActualHeight - 20);
             xmaxL.Stroke = Brushes.Blue;
             xmaxL.StrokeDashCap = PenLineCap.Flat;
             xmaxL.StrokeDashArray = new DoubleCollection() { 2, 2 };
             Grafic2.Children.Add(xmaxL);
 
+            //нижняя граница
             Line ymaxL = new Line();
             ymaxL.X1 = 20;
-            ymaxL.Y1 = 20 + (ymax - ymin) * vertNorm;
-            ymaxL.X2 = 780;
-            ymaxL.Y2 = 20 + (ymax - ymin) * vertNorm;
+            ymaxL.Y1 = (Grafic2.ActualHeight - 20);
+            ymaxL.X2 = (Grafic2.ActualWidth - 20);
+            ymaxL.Y2 = (Grafic2.ActualHeight - 20);
             ymaxL.Stroke = Brushes.Blue;
             ymaxL.StrokeDashCap = PenLineCap.Flat;
             ymaxL.StrokeDashArray = new DoubleCollection() { 2, 2 };
             Grafic2.Children.Add(ymaxL);
 
+
+            //рисуем скважины, линии по x y и точка в центре
             for (int i = 0; i < nw; i++)
             {
                 Line L1 = new Line();
                 L1.X1 = 20;
                 L1.Y1 = 20 + (Convert.ToDouble(wellsW.wy[i].Text) - ymin) * vertNorm;
-                L1.X2 = 760;
+                L1.X2 = (Grafic2.ActualWidth - 20);
                 L1.Y2 = 20 + (Convert.ToDouble(wellsW.wy[i].Text) - ymin) * vertNorm;
                 L1.Stroke = Brushes.Red;
                 L1.StrokeDashCap = PenLineCap.Flat;
@@ -325,7 +333,7 @@ namespace PD
                 L2.X1 = 20 + (Convert.ToDouble(wellsW.wx[i].Text) - xmin) * horNorm;
                 L2.Y1 = 20;
                 L2.X2 = 20 + (Convert.ToDouble(wellsW.wx[i].Text) - xmin) * horNorm;
-                L2.Y2 = 460;
+                L2.Y2 = (Grafic2.ActualHeight - 20);
                 L2.Stroke = Brushes.Red;
                 L2.StrokeDashCap = PenLineCap.Flat;
                 L2.StrokeDashArray = new DoubleCollection() { 2, 2 };
@@ -341,47 +349,51 @@ namespace PD
 
             //**************после считывания вершин, рисуем элементы 
             //***************************************//***************************************//
-            //StreamReader nodeReader = new StreamReader("nodes.txt");
-            //numNodes = nodeReader.Read();
-            //Point[] nodes = new Point[numNodes];
-            //for (int i = 0; i < numNodes; i++)
-            //{
-            //    nodes[i].X = 20 + nodeReader.Read() * horNorm;
-            //    nodes[i].Y = 20 + nodeReader.Read() * vertNorm;
-            //}
+            StreamReader nodeReader = new StreamReader("nodexy.txt");
+            int numNodes = Int32.Parse(nodeReader.ReadLine());
+            Point[] nodes = new Point[numNodes];
+            for (int i = 0; i < numNodes; i++)
+            {
+                string text = nodeReader.ReadLine();
+                string[] bits = text.Split(' ');
+                nodes[i].Offset(20 + (double.Parse(bits[0].Replace('.', ',')) - xmin) * horNorm, 20 + (double.Parse(bits[1].Replace('.', ',')) - ymin) * vertNorm);
+            }
+            nodeReader.Close();
 
-            //StreamReader elemReader = new StreamReader("elem.txt");
-            //numElem = elemReader.Read();
+            StreamReader elemReader = new StreamReader("elemxy.txt", Encoding.UTF8);
+            int numElem = Int32.Parse(elemReader.ReadLine());
             //int[,] numNodesElem = new int[numElem, 3];
-            //int[,] numNodesElem = new int[numElem, 4]; //для прямоугольников
-            //for (int i = 0; i < numElem; i++)
-            //{
-            //    numNodesElem[i, 0] = elemReader.Read();
-            //    numNodesElem[i, 1] = elemReader.Read();
-            //    numNodesElem[i, 2] = elemReader.Read();
-            //    //numNodesElem[i, 3] = elemReader.Read();//для прямоугольников
-            //}
-            //***************************************//***************************************//
+            int[,] numNodesElem = new int[numElem, 4]; //для прямоугольников
+            for (int i = 0; i < numElem; i++)
+            {
+                string text = elemReader.ReadLine();
+                string[] bits = text.Split(' ');
+                numNodesElem[i, 0] = Int32.Parse(bits[0]);
+                numNodesElem[i, 1] = Int32.Parse(bits[1]);
+                numNodesElem[i, 2] = Int32.Parse(bits[2]);
+                //numNodesElem[i, 3] = Int32.Parse(bits[3]);//для прямоугольников
+            }
+            elemReader.Close();
 
-            //List<Polygon> elem = new List<Polygon>();
-            //for (int i = 0; i < numElem; i++)
-            //{
-            //    Polygon triad = new Polygon();
-            //    for (int k = 0; k < 3; k++)
-            //         triad.Points.Add(nodes[numNodesElem[i, k]]);
-            //    triad.Stroke = Brushes.Black;
-            //    elem.Add(triad);
-            //    Grafic2.Children.Add(triad);
+            List<Polygon> elem = new List<Polygon>();
+            for (int i = 0; i < numElem; i++)
+            {
+                Polygon triad = new Polygon();
+                for (int k = 0; k < 3; k++)
+                    triad.Points.Add(nodes[numNodesElem[i, k]]);
+                triad.Stroke = Brushes.Black;
+                triad.StrokeThickness = 0.5;
+                elem.Add(triad);
+                Grafic2.Children.Add(triad);
 
-            //    Polygon rectangle = new Polygon();
-            //    for (int k = 0; k < 4; k++)
-            //         rectangle.Points.Add(nodes[numNodesElem[i, k]]);
-            //    rectangle.Stroke = Brushes.Black;
-            //    elem.Add(rectangle);
-            //    Grafic2.Children.Add(rectangle);
-            //}
+                //Polygon rectangle = new Polygon();
+                //for (int k = 0; k < 4; k++)
+                //    rectangle.Points.Add(nodes[numNodesElem[i, k]]);
+                //rectangle.Stroke = Brushes.Black;
+                //elem.Add(rectangle);
+                //Grafic2.Children.Add(rectangle);
+            }
         }
-
         private void PhaseXYClick(object sender, RoutedEventArgs e)
         {
             PhaseXY.Visibility = (PhaseXY.Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible;
