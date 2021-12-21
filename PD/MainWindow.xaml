@@ -50,7 +50,7 @@
                 MaterialDesignOutlinedButton - С рамкой
                 MaterialDesignFlatButton - без цвета
                 -->
-                <Button x:Name="AxisButton" Click="AxisButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="40">
+                <Button x:Name="AxisButton"  Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="40">
                     <Button.Content>Осесиметричная постановка</Button.Content>
 
                 </Button>

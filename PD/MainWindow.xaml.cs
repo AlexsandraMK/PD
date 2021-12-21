@@ -269,7 +269,7 @@ namespace PD
                 Polygon rectangle = new Polygon();
                 //for (int k = 0; k < 4; k++)
                 //    rectangle.Points.Add(nodes[numNodesElem[i, k]]);   //проблема с узлами из-за 0 1 9 10    0    1       надо 0 1 10 9
-                                                                         //потому что они расположены так =>   9    10      или иначе, но по граням
+                //потому что они расположены так =>   9    10      или иначе, но по граням
                 rectangle.Points.Add(nodes[numNodesElem[i, 0]]);
                 rectangle.Points.Add(nodes[numNodesElem[i, 1]]);
                 rectangle.Points.Add(nodes[numNodesElem[i, 3]]);
@@ -486,11 +486,6 @@ namespace PD
 
         }
 
-        private void AxisButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void NwInput(object sender, TextChangedEventArgs args)
         {
 
@@ -543,16 +538,18 @@ namespace PD
             StreamWriter zone_perf_rz = new StreamWriter("zone_perf_rz.txt");
             zone_perf_rz.WriteLine(nzp);
             for (int i = 0; i < nzp; i++)
-                mesh_rz.WriteLine(perforations.pu[i].Text + "\t"+ perforations.pd[i].Text + "\t" + perforations.theta[i].Text);
+                zone_perf_rz.WriteLine(perforations.pu[i].Text + "\t" + perforations.pd[i].Text + "\t" + perforations.theta[i].Text);
             zone_perf_rz.Close();
 
             StreamWriter phaseprop = new StreamWriter("phaseprop.txt");
             phaseprop.WriteLine(nph);
             for (int i = 0; i < nph; i++)
                 phaseprop.WriteLine(phases.Mu[i].Text);
+            phaseprop.Close();
 
             StreamWriter plast = new StreamWriter("plast.txt");
             plast.WriteLine(P.Text);
+            plast.Close();
 
             StreamWriter domain_xy = new StreamWriter("domain_xy.txt");
             domain_xy.WriteLine(Xmin.Text);
@@ -562,24 +559,29 @@ namespace PD
             domain_xy.WriteLine(K_xy.Text);
             domain_xy.WriteLine(Phi_xy.Text);
             domain_xy.WriteLine(SOil_xy.Text);
+            domain_xy.Close();
 
             StreamWriter mesh_xy = new StreamWriter("mesh_xy.txt");
             mesh_xy.WriteLine(Nx.Text);
             mesh_xy.WriteLine(Ny.Text);
             mesh_xy.WriteLine(kw.Text);
+            mesh_xy.Close();
 
             StreamWriter wells = new StreamWriter("wells.txt");
             wells.WriteLine(nw);
             for (int i = 0; i < nw; i++)
-                phaseprop.WriteLine(wellsW.wx[i].Text + "\t" + wellsW.wy[i].Text + "\t" + wellsW.tetta[i].Text);
+                wells.WriteLine(wellsW.wx[i].Text + "\t" + wellsW.wy[i].Text + "\t" + wellsW.tetta[i].Text);
+            wells.Close();
 
             StreamWriter phaseprop_xy = new StreamWriter("phaseprop_xy.txt");
             phaseprop_xy.WriteLine(nph_xy);
             for (int i = 0; i < nph_xy; i++)
                 phaseprop_xy.WriteLine(phasesxy.MuXY[i].Text);
+            phaseprop_xy.Close();
 
             StreamWriter plast_xy = new StreamWriter("plast_xy.txt");
             plast_xy.WriteLine(PXY.Text);
+            plast_xy.Close();
         }
     }
 }
