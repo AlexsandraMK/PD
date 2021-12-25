@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Diagnostics;
 
 
 namespace PD
@@ -597,10 +598,17 @@ namespace PD
             plast_xy.WriteLine(PXY.Text);
             plast_xy.Close();
 
-            /*
-            System.Diagnostics.Process p = new System.Diagnostics.Process();
-            p.StartInfo.FileName = @"final.exe";
-            p.Start();*/
+            Process meshBuilder = new Process();
+            meshBuilder.StartInfo.FileName = "final.exe";
+            meshBuilder.Start();
+
+            meshBuilder.WaitForExit();
+
+            Process femSolver = new Process();
+            femSolver.StartInfo.FileName = "MFE_square.exe";
+            femSolver.Start();
+
+            femSolver.WaitForExit();
 
         }
     }
