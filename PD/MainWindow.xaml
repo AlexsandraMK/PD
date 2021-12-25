@@ -51,7 +51,7 @@
                 MaterialDesignFlatButton - без цвета
                 -->
                 <Button x:Name="AxisButton"  Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="40">
-                    <Button.Content>Осесиметричная постановка</Button.Content>
+                    <Button.Content>Осесимметричная постановка</Button.Content>
 
                 </Button>
                 <StackPanel x:Name="Axis" Visibility="Collapsed">
@@ -205,11 +205,11 @@
                             <TextBlock Text="Ymax" TextAlignment="Right" Grid.Column="0" Grid.Row="3" Margin="0,0,5,5"></TextBlock>
                             <TextBox x:Name="Ymax" Grid.Column="1" Grid.Row="3" Margin="0,0,0,5"></TextBox>
                             <TextBlock Text="K_xy" TextAlignment="Right" Grid.Column="0" Grid.Row="4" Margin="0,0,5,5"></TextBlock>
-                            <TextBox x:Name="K_xy" TextChanged="NLInput" Grid.Column="1" Grid.Row="4" Margin="0,0,0,5"></TextBox>
+                            <TextBox x:Name="K_xy"  Grid.Column="1" Grid.Row="4" Margin="0,0,0,5"></TextBox>
                             <TextBlock Text="Phi_xy" TextAlignment="Right" Grid.Column="0" Grid.Row="5" Margin="0,0,5,5"></TextBlock>
-                            <TextBox x:Name="Phi_xy" TextChanged="NLInput" Grid.Column="1" Grid.Row="5" Margin="0,0,0,5"></TextBox>
+                            <TextBox x:Name="Phi_xy"  Grid.Column="1" Grid.Row="5" Margin="0,0,0,5"></TextBox>
                             <TextBlock Text="SOil_xy" TextAlignment="Right" Grid.Column="0" Grid.Row="6" Margin="0,0,5,5"></TextBlock>
-                            <TextBox x:Name="SOil_xy" TextChanged="NLInput" Grid.Column="1" Grid.Row="6" Margin="0,0,0,5"></TextBox>
+                            <TextBox x:Name="SOil_xy" Grid.Column="1" Grid.Row="6" Margin="0,0,0,5"></TextBox>
                         </Grid>
                     </StackPanel>
                     <!--- ................................................................................-->

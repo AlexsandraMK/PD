@@ -285,6 +285,7 @@ namespace PD
             }
         }
 
+
         private void BuildMeshXY(object sender, RoutedEventArgs e)
         {
             BuildAxisXY();
@@ -343,7 +344,8 @@ namespace PD
                 EllipseGeometry ellipse = new EllipseGeometry(new Point(20 + (Convert.ToDouble(wellsW.wx[i].Text) - xmin) * horNorm, 20 + (Convert.ToDouble(wellsW.wy[i].Text) - ymin) * vertNorm), 5, 5);
                 ellipses.Children.Add(ellipse);
                 p.Data = ellipses;
-                p.Fill = Brushes.Red;
+                p.Stroke = Brushes.Red;
+                p.StrokeThickness = 2; // 2 пикселя, толщина
                 Grafic2.Children.Add(p);
             }
 
@@ -532,7 +534,7 @@ namespace PD
 
         private void StartClick(object sender, RoutedEventArgs e)
         {
-            StreamWriter domain = new StreamWriter("domain.txt");
+            StreamWriter domain = new StreamWriter("domain_rz.txt");
             domain.WriteLine(Rw.Text);
             domain.WriteLine(Rb.Text);
             domain.WriteLine(nl);
@@ -594,6 +596,12 @@ namespace PD
             StreamWriter plast_xy = new StreamWriter("plast_xy.txt");
             plast_xy.WriteLine(PXY.Text);
             plast_xy.Close();
+
+            /*
+            System.Diagnostics.Process p = new System.Diagnostics.Process();
+            p.StartInfo.FileName = @"final.exe";
+            p.Start();*/
+
         }
     }
 }
