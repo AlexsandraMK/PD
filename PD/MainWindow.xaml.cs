@@ -607,8 +607,15 @@ namespace PD
             Process femSolver = new Process();
             femSolver.StartInfo.FileName = "MFE_square.exe";
             femSolver.Start();
-
             femSolver.WaitForExit();
+
+            meshBuilder.WaitForExit();
+             Process femSolverp = new Process();
+            femSolverp.StartInfo.FileName = "p.exe";
+            femSolverp.Start();
+
+
+            femSolverp.WaitForExit();
 
         }
     }
